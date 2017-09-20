@@ -1,0 +1,25 @@
+{
+  "name": "ep-transfers",
+  "version": "1.0.0",
+  "description": "Fetch transfers from EliteProspects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsgkirkby/ep-transfers.git"
+  },
+  "author": "Dylan Kirkby",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dsgkirkby/ep-transfers/issues"
+  },
+  "homepage": "https://github.com/dsgkirkby/ep-transfers#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "command-line-args": "^4.0.7",
+    "lodash": "^4.17.4",
+    "progress": "^2.0.0"
+  }
+}
