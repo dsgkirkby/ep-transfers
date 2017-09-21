@@ -125,4 +125,4 @@ const main = async () => {
   fs.writeFile('data.json', JSON.stringify(transfersForOutput));
 };
 
-main().then(() => console.log('Success!'));
+main().then(() => console.log('Success! Output all transfers to data.json'));
