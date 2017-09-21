@@ -4,11 +4,15 @@
 
 - Install node 8.x: https://nodejs.org/
 
-- Install dependencies: `npm install` from the root of the repository
+- Install dependencies:
+  - Open a terminal (cmd/Powershell on Windows, terminal on Mac)
+  - Navigate to the root of this repository
+  - Run `npm install`
 
-- Add your API key to `index.js`
+- Open `index.js` in your text editor of choice and add the API key
 
-- Run the script: `node index.js --league=[leagueId]` where leagueId is the league ID from EliteProspects (for example, the NHL is 7)
+- Run the script:
+  - `node index.js --league=[leagueId]` where leagueId is the league ID from EliteProspects (for example, the NHL is 7)
 
 ## Notes
 
