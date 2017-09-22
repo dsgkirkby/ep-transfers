@@ -12,7 +12,7 @@
 - Open `index.js` in your text editor of choice and add the API key
 
 - Run the script:
-  - `node index.js --league=[leagueId]` where leagueId is the league ID from EliteProspects (for example, the NHL is 7)
+  - `node index.js --league=leagueId` where leagueId is the league ID from EliteProspects (for example, the NHL is 7)
 
 ## Notes
 
