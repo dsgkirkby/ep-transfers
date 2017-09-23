@@ -10,6 +10,11 @@ const optionDefinitions = [
 
 const options = args(optionDefinitions);
 
+if (isNaN(options.league)) {
+  console.error('Please provide a numeric league id');
+  return;
+}
+
 const RATELIMIT_TIMEOUT = 50;
 const TRANSFERS_PER_REQUEST = 200;
 
@@ -40,7 +45,7 @@ async function reliableFetch(url) {
 const main = async () => {
   const playerStats = {};
 
-  const transferRequestUrl = `${apiUrl}/transfers?apiKey=${apiKey}&filter=${encodeURIComponent(`transferProbability=CONFIRMED${options.league && `&(toTeam.latestTeamStats.league.parentLeague.id=${options.league}|fromTeam.latestTeamStats.league.parentLeague.id=${options.league})`}`)}`;
+  const transferRequestUrl = `${apiUrl}/transfers?apiKey=${apiKey}&filter=${encodeURIComponent(`transferProbability=CONFIRMED&(toTeam.latestTeamStats.league.parentLeague.id=${options.league}|toTeam.latestTeamStats.league.id=${options.league}|fromTeam.latestTeamStats.league.parentLeague.id=${options.league}|fromTeam.latestTeamStats.league.id=${options.league})`)}`;
 
   const transfersResponse = await reliableFetch(
     `${transferRequestUrl}&limit=1`
