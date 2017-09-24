@@ -53,7 +53,9 @@ const main = async () => {
 
   const totalNumberOfRequests = parseInt((transfersResponse.data.metadata.totalCount / TRANSFERS_PER_REQUEST + 1).toFixed(0));
 
-  const transfersProgress = new ProgressBar('Collecting Transfers :bar', {
+  console.log('Collecting all player transfers for league...');
+
+  const transfersProgress = new ProgressBar(':bar', {
     total: totalNumberOfRequests,
     complete: '█',
     incomplete: '░'
@@ -68,6 +70,8 @@ const main = async () => {
     return transfersResponse.data.data;
   }));
 
+  console.log('Collected all player transfers for league. Collecting player stats...');
+
   const transfers = _.flatten(allTransfers)
     .filter(Boolean)
     .filter((transfer) => {
@@ -80,7 +84,7 @@ const main = async () => {
 
   const players = transfers.map((transfer) => transfer.player.id);
 
-  const statsProgress = new ProgressBar('Collecting Transferred Players :bar', {
+  const statsProgress = new ProgressBar(':bar', {
     total: _.uniq(players).length,
     complete: '█',
     incomplete: '░'
@@ -100,6 +104,8 @@ const main = async () => {
   });
 
   await Promise.all(allStats);
+
+  console.log('Collected all player stats. Writing to file...');
 
   const transfersForOutput = transfers
     .map((transfer) => {
@@ -127,7 +133,7 @@ const main = async () => {
     })
     .filter((x) => x != null);
 
-  fs.writeFile('data.json', JSON.stringify(transfersForOutput));
+  fs.writeFileSync('data.json', JSON.stringify(transfersForOutput));
 };
 
 main().then(() => console.log('Success! Output all transfers to data.json'));
